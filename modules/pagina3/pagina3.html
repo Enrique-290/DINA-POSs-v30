@@ -1,0 +1,109 @@
+<section class="pg3-shell">
+  <header class="pg3-topbar">
+    <div>
+      <h1>Página 3.0</h1>
+      <p>Render funcional por módulos con rutas base para una web real.</p>
+    </div>
+    <div class="pg3-badges">
+      <span class="pg3-badge">V30.4</span>
+      <span class="pg3-badge pg3-badge--soft">Carrito modular</span>
+    </div>
+  </header>
+
+  <div class="pg3-grid">
+    <aside class="pg3-card pg3-navCard">
+      <h3>Rutas base</h3>
+      <nav id="pg3-routeNav" class="pg3-routeNav">
+        <button type="button" class="btn active" data-route="inicio">Inicio</button>
+        <button type="button" class="btn ghost" data-route="tienda">Tienda</button>
+        <button type="button" class="btn ghost" data-route="categoria">Categoría</button>
+        <button type="button" class="btn ghost" data-route="producto">Producto</button>
+      </nav>
+
+      <div class="pg3-section">
+        <h4>General</h4>
+        <label>Nombre del negocio</label>
+        <input id="pg3-businessName" class="input" placeholder="Dinamita Gym">
+        <label>Título principal</label>
+        <input id="pg3-heroTitle" class="input" placeholder="Explota tu potencial">
+        <label>Subtítulo</label>
+        <textarea id="pg3-heroSubtitle" class="input" rows="3" placeholder="Tu tienda y sistema conectados."></textarea>
+      </div>
+
+      <div class="pg3-section">
+        <h4>Banners</h4>
+        <label>Banner principal</label>
+        <input id="pg3-bannerPrimaryFile" type="file" accept="image/*" class="input">
+        <div class="pg3-bannerPreviewWrap"><img id="pg3-bannerPrimaryPreview" class="pg3-bannerPreview" alt="Banner principal"></div>
+        <button id="pg3-bannerPrimaryClear" class="btn ghost" type="button">Quitar banner principal</button>
+        <label>Banner secundario</label>
+        <input id="pg3-bannerSecondaryFile" type="file" accept="image/*" class="input">
+        <div class="pg3-bannerPreviewWrap"><img id="pg3-bannerSecondaryPreview" class="pg3-bannerPreview" alt="Banner secundario"></div>
+        <button id="pg3-bannerSecondaryClear" class="btn ghost" type="button">Quitar banner secundario</button>
+      </div>
+
+      <div class="pg3-section">
+        <h4>Contacto base</h4>
+        <label>Teléfono</label>
+        <input id="pg3-phone" class="input" placeholder="5512345678">
+        <label>Dirección</label>
+        <textarea id="pg3-address" class="input" rows="2" placeholder="Dirección del negocio"></textarea>
+        <label>Horario</label>
+        <input id="pg3-hours" class="input" placeholder="Lun a Vie 6:00 am - 10:00 pm">
+        <label>Google Maps</label>
+        <input id="pg3-maps" class="input" placeholder="https://maps.google.com/...">
+        <label>Facebook</label>
+        <input id="pg3-facebook" class="input" placeholder="https://facebook.com/...">
+        <label>Instagram</label>
+        <input id="pg3-instagram" class="input" placeholder="https://instagram.com/...">
+      </div>
+
+      <div class="pg3-section">
+        <h4>Visualización</h4>
+        <label>Límite catálogo</label>
+        <input id="pg3-limitCatalog" class="input" type="number" min="4" max="60" step="1" placeholder="8">
+        <label>Búsqueda inicial</label>
+        <input id="pg3-search" class="input" placeholder="Buscar producto...">
+      </div>
+
+      <div class="pg3-actions">
+        <button id="pg3-saveBtn" class="btn" type="button">Guardar</button>
+        <button id="pg3-resetBtn" class="btn ghost" type="button">Restablecer</button>
+      </div>
+
+      <div class="pg3-section">
+        <h4>Exportación</h4>
+        <p class="pg3-help">Descarga tu sitio en archivos separados listo para dominio.</p>
+        <div class="pg3-actions pg3-actions--stack">
+          <button id="pg3-exportHtmlBtn" class="btn ghost" type="button">Descargar página HTML</button>
+          <button id="pg3-exportJsonBtn" class="btn ghost" type="button">Descargar JSON</button>
+          <button id="pg3-exportZipBtn" class="btn" type="button">Descargar ZIP web</button>
+          <label class="btn ghost pg3-fileBtn" for="pg3-importJsonInput">Subir JSON</label>
+          <input id="pg3-importJsonInput" type="file" accept="application/json,.json" hidden>
+        </div>
+      </div>
+
+      <div class="pg3-section">
+        <h4>Estructura activa</h4>
+        <ul class="pg3-tree">
+          <li>Header</li>
+          <li>Hero</li>
+          <li>Inicio / Tienda / Categoría / Producto</li>
+          <li>Contacto</li>
+          <li>Footer</li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="pg3-card pg3-previewCard">
+      <div class="pg3-previewHead">
+        <div>
+          <h3>Vista previa funcional</h3>
+          <p id="pg3-currentRouteLabel">Ruta actual: Inicio</p>
+        </div>
+        <span class="pg3-chip">Router base activo</span>
+      </div>
+      <div id="pg3-previewRoot" class="pg3-previewRoot"></div>
+    </section>
+  </div>
+</section>
