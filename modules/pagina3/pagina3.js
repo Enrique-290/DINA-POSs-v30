@@ -374,29 +374,28 @@
 
   function buildZipFiles(){
     const payload = buildExportState();
-    const dataJs = 'window.__PAGINA3_DATA__ = ' + JSON.stringify(payload) + ';';
     const appJs = buildExportAppJs();
     const stylesCss = buildExportStyles();
-    const page = buildExportPageHtml();
     return [
-      { name:'index.html', content: page.replaceAll('__PAGE__','inicio') },
-      { name:'tienda.html', content: page.replaceAll('__PAGE__','tienda') },
-      { name:'categoria.html', content: page.replaceAll('__PAGE__','categoria') },
-      { name:'producto.html', content: page.replaceAll('__PAGE__','producto') },
+      { name:'index.html', content: buildExportPageHtml('inicio', payload, stylesCss, appJs) },
+      { name:'tienda.html', content: buildExportPageHtml('tienda', payload, stylesCss, appJs) },
+      { name:'categoria.html', content: buildExportPageHtml('categoria', payload, stylesCss, appJs) },
+      { name:'producto.html', content: buildExportPageHtml('producto', payload, stylesCss, appJs) },
       { name:'assets/styles.css', content: stylesCss },
       { name:'assets/app.js', content: appJs },
-      { name:'data/data.js', content: dataJs },
+      { name:'data/data.js', content: 'window.__PAGINA3_DATA__ = ' + JSON.stringify(payload) + ';' },
       { name:'data/data.json', content: JSON.stringify(payload,null,2) }
     ];
   }
 
   function buildStandaloneHtml(){
     const payload = buildExportState();
-    return `<!doctype html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>${escapeHtml(payload.businessName)}</title><style>${buildExportStyles()}</style></head><body data-page="inicio"><div id="app"></div><script>window.__PAGINA3_DATA__=${JSON.stringify(payload)};<\/script><script>${buildExportAppJs()}<\/script></body></html>`;
+    return buildExportPageHtml('inicio', payload, buildExportStyles(), buildExportAppJs());
   }
 
-  function buildExportPageHtml(){
-    return `<!doctype html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Página 3.0</title><link rel="stylesheet" href="assets/styles.css"></head><body data-page="__PAGE__"><div id="app"></div><script src="data/data.js"></script><script src="assets/app.js"></script></body></html>`;
+  function buildExportPageHtml(pageName, payload, stylesCss, appJs){
+    const title = escapeHtml(payload.businessName || 'Página 3.0');
+    return `<!doctype html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>${title}</title><style>${stylesCss}</style></head><body data-page="${pageName}"><div id="app"></div><script>window.__PAGINA3_DATA__=${JSON.stringify(payload)};<\/script><script>${appJs}<\/script></body></html>`;
   }
 
   function buildExportStyles(){
